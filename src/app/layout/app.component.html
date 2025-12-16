@@ -1,0 +1,9 @@
+<app-toolbar (toggle)="menuOpen = !menuOpen"></app-toolbar>
+
+<div class="layout">
+  <app-navbar [open]="menuOpen"></app-navbar>
+
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

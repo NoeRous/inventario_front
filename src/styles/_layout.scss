@@ -1,0 +1,19 @@
+@use 'variables' as v;
+
+.layout {
+  display: flex;
+  min-height: calc(100vh - v.$toolbar-height);
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  background-color: v.$light;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+  }
+}
