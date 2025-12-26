@@ -1,35 +1,51 @@
 @use '../../../styles/variables' as v;
 
-.sidebar {
-  width: v.$sidebar-width;
-  background-color: v.$dark;
-  color: v.$text-light;
-  padding-top: 20px;
-  transition: transform 0.3s ease;
+.navbar {
+  width: 100%;
+  height: 100%;
+  background-color: #f5f0f7;
+  padding: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
-.item {
-  display: block;
-  padding: 12px 20px;
+.nav-items {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  color: #333;
+  text-decoration: none;
+  border-left: 4px solid transparent;
+  transition: all 0.3s ease;
   cursor: pointer;
 
+  i {
+    font-size: 1.2rem;
+  }
+
+  span {
+    font-size: 0.95rem;
+  }
+
   &:hover {
-    background-color: v.$hover;
-  }
-}
-
-/* MÓVIL */
-@media (max-width: 768px) {
-  .sidebar {
-    position: fixed;
-    top: v.$toolbar-height;
-    left: 0;
-    height: calc(100vh - v.$toolbar-height);
-    transform: translateX(-100%);
-    z-index: 1000;
+    background-color: #f0e6f5;
+    border-left-color: #7ccc8f;
+    color: #2d7a5c;
   }
 
-  .sidebar.open {
-    transform: translateX(0);
+  &.active {
+    background-color: #e8d5f0;
+    border-left-color: #7ccc8f;
+    color: #2d7a5c;
+    font-weight: 600;
   }
 }

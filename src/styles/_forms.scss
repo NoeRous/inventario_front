@@ -1,0 +1,12 @@
+@use 'variables' as *;
+
+.input,
+.select {
+  padding: 10px;
+  border-radius: $radius;
+  border: 1px solid $border;
+
+  &:focus {
+    border-color: $primary;
+  }
+}

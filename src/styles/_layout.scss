@@ -1,19 +1,18 @@
-@use 'variables' as v;
+@use 'variables' as *;
 
-.layout {
-  display: flex;
-  min-height: calc(100vh - v.$toolbar-height);
+body {
+  background-color: $light;
+  color: $text-dark;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
 }
 
-.content {
-  flex: 1;
-  padding: 20px;
-  background-color: v.$light;
+.navbar {
+  height: $toolbar-height;
+  background: $dark;
+  color: $text-light;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .layout {
-    flex-direction: column;
-  }
+.sidebar {
+  width: $sidebar-width;
+  background: $dark;
 }

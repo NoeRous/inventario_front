@@ -1,9 +1,19 @@
-$primary: #627708;
-$dark: #263238;
-$light: #f5f7fa;
-$hover: #37474f;
+$primary: #f6b1c8;
+$secondary: #bfe6d3;
+$dark: #0f0f0f;
+$light: #f9fdfb;
+$hover: #f2a6be;
+$border: #e6e6e6;
+
+$text-dark: #1a1a1a;
 $text-light: #ffffff;
+$text-muted: #7a7a7a;
+$text-accent: #ffd84d;
 
 $toolbar-height: 60px;
-$sidebar-width: 220px;
-$radius: 8px;
+$sidebar-width: 240px;
+$radius: 10px;
+$transition: all 0.3s ease;
+
+$shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
+$shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12);

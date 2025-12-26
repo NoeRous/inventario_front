@@ -1,0 +1,6 @@
+@use 'variables' as *;
+
+.badge-sale {
+  background: $text-accent;
+  color: $dark;
+}

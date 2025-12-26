@@ -1,9 +1,14 @@
+<!-- TOOLBAR ARRIBA -->
 <app-toolbar (toggle)="menuOpen = !menuOpen"></app-toolbar>
 
 <div class="layout">
-  <app-navbar [open]="menuOpen"></app-navbar>
+  <!-- NAVBAR IZQUIERDA -->
+  <app-navbar [class.closed]="!menuOpen"></app-navbar>
 
+  <!-- CONTENIDO DERECHA -->
   <main class="content">
-    <router-outlet></router-outlet>
+    <div class="content-inner">
+      <router-outlet></router-outlet>
+    </div>
   </main>
 </div>

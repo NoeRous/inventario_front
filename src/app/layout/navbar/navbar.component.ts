@@ -1,11 +1,13 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
+  imports: [ RouterModule   
+  ],
 })
 export class NavbarComponent {
-  @Input() open = false;
 }
