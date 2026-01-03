@@ -3,15 +3,17 @@
 .toolbar {
   height: v.$toolbar-height;
   background-color: v.$primary;
-  color: v.$text-light;
+  color: v.$text-dark;
   display: flex;
   align-items: center;
   padding: 0 16px;
+  box-shadow: v.$shadow-soft;
 }
 
 .title {
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 600;
+  color: v.$text-dark;
 }
 
 .menu-btn {
@@ -20,11 +22,16 @@
   margin-right: 16px;
   background: none;
   border: none;
-  color: white;
+  color: v.$text-dark;
   cursor: pointer;
+  transition: v.$transition;
+
+  &:hover {
+    color: v.$text-accent;
+  }
 }
 
-/* Mostrar botón en móvil */
+/* 📱 Mostrar botón en móvil */
 @media (max-width: 768px) {
   .menu-btn {
     display: block;

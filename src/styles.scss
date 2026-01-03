@@ -1,2 +1,23 @@
+/* Primero tus SCSS locales con @use */
 @use './styles/main';
-@use "primeicons/primeicons.css";
+
+/* Luego Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Luego CSS externo */
+@import "primeicons/primeicons.css";
+@import 'primeflex/primeflex.css';
+
+/* Por último tus estilos globales */
+:root {
+  --body-bg: var(--p-surface-50);
+  --body-text-color: var(--p-surface-900);
+  /* ... */
+}
+body {
+  background-color: var(--body-bg);
+  color: var(--body-text-color);
+  font-family: 'Roboto', sans-serif;
+}

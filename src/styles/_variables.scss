@@ -1,19 +1,21 @@
-$primary: #f6b1c8;
-$secondary: #bfe6d3;
-$dark: #0f0f0f;
-$light: #f9fdfb;
-$hover: #f2a6be;
-$border: #e6e6e6;
+// 🎀 PALETA LIGHT FEMENINA
+$primary: #f8d4e5;      // rosa claro
+$secondary: #c3e9d6;    // verde menta
+$light: #ffffff;       // fondo principal
+$hover: #f5c5d8;       // hover suave
+$border: #e8d5f0;
 
-$text-dark: #1a1a1a;
-$text-light: #ffffff;
-$text-muted: #7a7a7a;
-$text-accent: #ffd84d;
+// 📝 TEXTO
+$text-dark: #2d2d2d;
+$text-muted: #888888;
+$text-accent: #6fb88f;
 
+// 📐 LAYOUT
 $toolbar-height: 60px;
 $sidebar-width: 240px;
-$radius: 10px;
+$radius: 12px;
 $transition: all 0.3s ease;
 
-$shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
-$shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12);
+// 🌤 SOMBRAS SUAVES
+$shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.06);
+$shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.1);
