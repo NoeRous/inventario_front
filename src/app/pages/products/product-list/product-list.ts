@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from '../../../../service/ProductService';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { environment } from '../../../../environments/environment.prod';
 
 @Component({
   standalone: true,
@@ -60,4 +61,15 @@ export class ProductList {
         return 'info';
     }
   }
+
+  getImageUrl(imagePath: string | null | undefined): string {
+    if (!imagePath?.trim()) {
+      return '/assets/no-image.png'; // imagen por defecto
+    }
+
+    // Retorna la URL completa
+    const url = `${environment.apiUrl}${imagePath}`;
+    return url;
+  }
+
 }

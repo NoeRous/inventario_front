@@ -6,7 +6,7 @@
   [paginator]="true"
 >
 
-  <!-- HEADER -->
+  <!-- ================= HEADER ================= -->
   <ng-template #header>
     <div class="flex justify-end">
       <p-selectbutton
@@ -27,7 +27,7 @@
     </div>
   </ng-template>
 
-  <!-- ================= LIST ================= -->
+  <!-- ================= LIST VIEW ================= -->
   <ng-template #list let-items>
     <div *ngFor="let item of items; let first = first">
       <div
@@ -36,19 +36,22 @@
           'border-t border-surface-200 dark:border-surface-700': !first
         }"
       >
+        <!-- IMAGE -->
         <div class="sm:w-40 relative">
           <img
             class="rounded w-full"
-            [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + item.image"
+            [src]="getImageUrl(item.image)"
             [alt]="item.name"
           />
+
           <p-tag
             [value]="item.inventoryState"
-         
+           
             class="absolute top-1 left-1"
           />
         </div>
 
+        <!-- INFO -->
         <div class="flex flex-col sm:flex-row justify-between flex-1 gap-6">
           <div>
             <span class="text-sm text-surface-500">
@@ -57,19 +60,23 @@
             <h3 class="text-lg font-medium mt-1">
               {{ item.name }}
             </h3>
+            <p class="text-sm text-surface-500">
+              {{ item.description }}
+            </p>
           </div>
 
           <div class="flex flex-col items-end gap-3">
             <span class="text-xl font-semibold">
-              {{ item.price | currency:'USD' }}
+              {{ item.price | currency:'Bs. ' }}
             </span>
+
             <div class="flex gap-2">
               <button pButton icon="pi pi-heart" outlined></button>
               <button
                 pButton
                 icon="pi pi-shopping-cart"
                 label="Buy"
-                [disabled]="item.inventoryStatus === 'OUTOFSTOCK'"
+                [disabled]="item.inventoryState === 'OUT_OF_STOCK'"
               ></button>
             </div>
           </div>
@@ -78,24 +85,27 @@
     </div>
   </ng-template>
 
-  <!-- ================= GRID 4 COLS ================= -->
+  <!-- ================= GRID VIEW ================= -->
   <ng-template #grid let-items>
     <div class="w-full box-border px-2">
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+
         <div *ngFor="let product of items" class="w-full">
           <div
             class="h-full p-4 border border-surface-200 dark:border-surface-700
                    bg-surface-0 dark:bg-surface-900 rounded flex flex-col"
           >
+
             <!-- IMAGE -->
             <div class="relative bg-surface-50 rounded p-4 flex justify-center">
               <img
                 class="rounded max-h-40 object-contain"
-                [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + product.image"
+                [src]="getImageUrl(product.image)"
                 [alt]="product.name"
               />
+
               <p-tag
-                [value]="product.inventoryStatus"
+                [value]="product.inventoryState"
                
                 class="absolute top-1 left-1"
               />
@@ -103,16 +113,15 @@
 
             <!-- CONTENT -->
             <div class="flex flex-col flex-1 pt-4">
-              <span class="text-sm text-surface-500">
+               <span class="text-sm text-surface-500">
                 {{ product.category }}
               </span>
-
               <h3 class="text-base font-medium mt-1">
                 {{ product.name }}
               </h3>
 
               <span class="text-lg font-semibold mt-3">
-                {{ product.price | currency:'USD' }}
+                {{ product.price | currency:'Bs. ' }}
               </span>
 
               <!-- ACTIONS -->
@@ -122,13 +131,16 @@
                   icon="pi pi-shopping-cart"
                   label="Buy"
                   class="flex-1"
-                  [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"
+                  [disabled]="product.inventoryState === 'OUT_OF_STOCK'"
                 ></button>
+
                 <button pButton icon="pi pi-heart" outlined></button>
               </div>
             </div>
+
           </div>
         </div>
+
       </div>
     </div>
   </ng-template>
