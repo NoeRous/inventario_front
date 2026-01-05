@@ -20,4 +20,9 @@ body {
   background-color: var(--body-bg);
   color: var(--body-text-color);
   font-family: 'Roboto', sans-serif;
+  scrollbar-color: var(--p-scrollbar-thumb) var(--p-scrollbar-track);
+}
+
+.p-dataview-content {
+  box-sizing: border-box;
 }
