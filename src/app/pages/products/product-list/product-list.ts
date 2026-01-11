@@ -1,60 +1,57 @@
 import { Component, NO_ERRORS_SCHEMA, signal } from '@angular/core';
-import { CardModule } from 'primeng/card';
-import { Product } from '../../../../domain/product.model';
-import { DataView } from 'primeng/dataview';
-import { Tag } from 'primeng/tag';
-import { Rating } from 'primeng/rating';
-import { ButtonModule } from 'primeng/button';
-import { SelectButton } from 'primeng/selectbutton';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from '../../../../service/ProductService';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { Product } from '../../../../domain/product.model';
+
+import { ButtonModule } from 'primeng/button';
+import { Tag } from 'primeng/tag';
+import { InputTextModule } from 'primeng/inputtext';
+import { SelectModule } from 'primeng/select';
 import { environment } from '../../../../environments/environment.prod';
+
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { HttpClientModule } from '@angular/common/http';
+import { MultiSelectModule } from 'primeng/multiselect';
+
+import { TableModule } from 'primeng/table';
+
 
 @Component({
   standalone: true,
   selector: 'app-product-list',
-  imports: [
-    CommonModule,
-    FormsModule,
-    CardModule,
-    ButtonModule,
-    DataView,
-    Tag,
-    SelectButton
-  ],
+  imports: [CommonModule, FormsModule, TableModule, ButtonModule, Tag, InputTextModule, SelectModule,IconFieldModule,InputIconModule,HttpClientModule,MultiSelectModule],
   schemas: [NO_ERRORS_SCHEMA],
   templateUrl: './product-list.html',
-  styleUrl: './product-list.scss',
+  styleUrl: './product-list.scss'
 })
 export class ProductList {
+  products = signal<Product[]>([]);
+  loading = false;
 
-  layout: 'list' | 'grid' = 'grid';
-  options: ('list' | 'grid')[] = ['list', 'grid'];
-
-  products = signal<Product[]>([]); // señal vacía al inicio
+  inventoryStates = ['DISPONIBLE', 'BAJO_STOCK', 'AGOTADO'];
 
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
-    // Como getProductsData() devuelve un Promise
-     this.productService.getProductsData().subscribe((data) => {
-      this.products.set(data.slice(0, 12)); // guardamos los primeros 12 productos
+    this.loading = true;
+    this.productService.getProductsData().subscribe((data) => {
+      this.products.set(data);
+      this.loading = false;
     });
   }
 
   get productList(): Product[] {
-    return this.products(); // retorna los productos actuales
+    return this.products();
   }
 
-  getSeverity(product: Product) {
-    // Ajustado a los valores de tu backend
-    switch (product.inventoryState) {
+  getSeverity(state: string): 'success' | 'secondary' | 'info' | 'warn' | 'danger' | 'contrast' {
+    switch (state) {
       case 'DISPONIBLE':
         return 'success';
       case 'BAJO_STOCK':
-        return 'warning';
+        return 'warn';
       case 'AGOTADO':
         return 'danger';
       default:
@@ -64,12 +61,9 @@ export class ProductList {
 
   getImageUrl(imagePath: string | null | undefined): string {
     if (!imagePath?.trim()) {
-      return '/assets/no-image.png'; // imagen por defecto
+      return '/assets/no-image.png';
     }
-
-    // Retorna la URL completa
     const url = `${environment.apiUrl}${imagePath}`;
     return url;
   }
-
 }
