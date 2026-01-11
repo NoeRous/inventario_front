@@ -1,4 +1,4 @@
-export type InventoryState = 'AVAILABLE' | 'LOW_STOCK' | 'OUT_OF_STOCK';
+export type InventoryState = 'DISPONIBLE' | 'BAJO_STOCK' | 'AGOTADO';
 
 export interface Product {
   id: string;

@@ -76,7 +76,7 @@
                 pButton
                 icon="pi pi-shopping-cart"
                 label="Buy"
-                [disabled]="item.inventoryState === 'OUT_OF_STOCK'"
+                [disabled]="item.inventoryState === 'AGOTADO'"
               ></button>
             </div>
           </div>
@@ -131,7 +131,7 @@
                   icon="pi pi-shopping-cart"
                   label="Buy"
                   class="flex-1"
-                  [disabled]="product.inventoryState === 'OUT_OF_STOCK'"
+                  [disabled]="product.inventoryState === 'AGOTADO'"
                 ></button>
 
                 <button pButton icon="pi pi-heart" outlined></button>

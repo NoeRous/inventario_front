@@ -51,11 +51,11 @@ export class ProductList {
   getSeverity(product: Product) {
     // Ajustado a los valores de tu backend
     switch (product.inventoryState) {
-      case 'AVAILABLE':
+      case 'DISPONIBLE':
         return 'success';
-      case 'LOW_STOCK':
+      case 'BAJO_STOCK':
         return 'warning';
-      case 'OUT_OF_STOCK':
+      case 'AGOTADO':
         return 'danger';
       default:
         return 'info';
